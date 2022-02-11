@@ -1,14 +1,16 @@
-Products by region
+# Products by region
 https://azure.microsoft.com/en-in/global-infrastructure/services/
 
-List VM sizes in a region
+# List VM sizes in a region
 az vm list-sizes --location "eastus"
 Get-AZVMSize -Location "eastus"
 
-Filter for different sizes, suing the Where-Object
+# Filter for different sizes, suing the Where-Object
 Get-AzVMSize -Location "eastus" | Where {$_.NumberOfCores -gt 128}
 
-Finding the SKUs of Azure VMs images with PowerShell
+# Finding the SKUs of Azure VMs images with PowerShell
+# Copy all the code at once and paste in Shell
+
 $location = Get-AzLocation | select displayname | Out-GridView -PassThru -Title "Choose a location"
 $publisher = Get-AzVMImagePublisher -Location $location.DisplayName | Out-GridView -PassThru -Title "Choose a publisher"
 $offer = Get-AzVMImageOffer -Location $location.DisplayName -PublisherName $publisher.PublisherName | Out-GridView -PassThru -Title "Choose an offer"
